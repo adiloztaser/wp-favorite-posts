@@ -20,3 +20,8 @@ Icon?
 Thumbs.db
 
 .idea
+
+node_modules
+npm-debug.log
+TAGS
+package-lock.json

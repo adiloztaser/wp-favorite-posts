@@ -1,0 +1,22 @@
+{
+  "name": "wp-favorite-posts",
+  "version": "2.0.0",
+  "description": "This WordPress plugin allows visitors to add favorite posts.",
+  "main": "script.js",
+  "scripts": {
+    "wp-env": "wp-env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hberberoglu/wp-favorite-posts.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/hberberoglu/wp-favorite-posts/issues"
+  },
+  "homepage": "https://github.com/hberberoglu/wp-favorite-posts#readme",
+  "devDependencies": {
+    "@wordpress/env": "^3.0.0"
+  }
+}
