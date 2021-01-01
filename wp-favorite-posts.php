@@ -22,6 +22,7 @@
 
 define( 'WPFP_JS_VERSION', '1.6.8' );
 define( 'WPFP_PATH', plugins_url() . '/wp-favorite-posts' );
+define( 'WPFP_ASSETS_PATH', WPFP_PATH . '/assets' );
 define( 'WPFP_META_KEY', 'wpfp_favorites' );
 define( 'WPFP_USER_OPTION_KEY', 'wpfp_useroptions' );
 define( 'WPFP_COOKIE_KEY', 'wp-favorite-posts' );
@@ -304,7 +305,7 @@ function wpfp_list_most_favorited( $limit = 5 ) {
 require 'wpfp-widgets.php';
 
 function wpfp_loading_img() {
-	return "<img src='" . WPFP_PATH . "/img/loading.gif' alt='Loading' title='Loading' class='wpfp-hide wpfp-img' />";
+	return "<img src='" . WPFP_ASSETS_PATH . "/images/loading.gif' alt='Loading' title='Loading' class='wpfp-hide wpfp-img' />";
 }
 
 function wpfp_before_link_img() {
@@ -318,7 +319,7 @@ function wpfp_before_link_img() {
 		return "<img src='" . $options['custom_before_image'] . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
 	}
 
-	return "<img src='" . WPFP_PATH . '/img/' . $option . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
+	return "<img src='" . WPFP_ASSETS_PATH . '/images/' . $option . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
 }
 
 function wpfp_clear_favorites() {
@@ -397,14 +398,14 @@ add_shortcode( 'wp-favorite-posts', 'wpfp_shortcode_func' );
 
 function wpfp_add_js_script() {
 	if ( ! wpfp_get_option( 'dont_load_js_file' ) ) {
-		wp_enqueue_script( 'wp-favorite-posts', WPFP_PATH . '/script.js', array( 'jquery' ), WPFP_JS_VERSION );
+		wp_enqueue_script( 'wp-favorite-posts', WPFP_ASSETS_PATH . '/js/script.js', array( 'jquery' ), WPFP_JS_VERSION );
 	}
 }
 add_action( 'wp_print_scripts', 'wpfp_add_js_script' );
 
 function wpfp_wp_print_styles() {
 	if ( ! wpfp_get_option( 'dont_load_css_file' ) ) {
-		echo "<link rel='stylesheet' id='wpfp-css' href='" . WPFP_PATH . "/wpfp.css' type='text/css' />" . "\n";
+		echo "<link rel='stylesheet' id='wpfp-css' href='" . WPFP_ASSETS_PATH . "/css/wpfp.css' type='text/css' />" . "\n";
 	}
 }
 add_action( 'wp_print_styles', 'wpfp_wp_print_styles' );

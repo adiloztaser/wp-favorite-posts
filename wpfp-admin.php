@@ -87,14 +87,14 @@ jQuery(document).ready(function($) {
 	</div>
 	<h3 class="hndle"><span><?php _e( 'Do you use it ?', 'wp-favorite-posts' ); ?></span></h3>
 	<div class="inside" style="display: block;">
-		<img src="../wp-content/plugins/wp-favorite-posts/img/icon_coffee.png" alt="buy me a coffee" style=" margin: 5px; float:left;" />
+		<img src="../wp-content/plugins/wp-favorite-posts/assets/images/icon_coffee.png" alt="buy me a coffee" style=" margin: 5px; float:left;" />
 		<p>Hi! I'm <a href="http://nxsn.com?f=wpfp" target="_blank" title="Huseyin Berberoglu">Huseyin Berberoglu</a>, developer of this plugin.</p>
 		<p>I've been spending many hours to develop this plugin. <br />If you like and use this plugin, you can <strong>buy me a cup of coffee</strong>.</p>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 			">
-			<input type="image" src="../wp-content/plugins/wp-favorite-posts/img/donate.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+			<input type="image" src="../wp-content/plugins/wp-favorite-posts/assets/images/donate.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
 		</form>
 		<div style="clear:both;"></div>
 	</div>
@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
 
 		<table class="form-table">
 			<tr>
-				<th><?php _e( 'Only <strong>registered users</strong> can favorite', 'wp-favorite-posts' ); ?></th><td><input type="checkbox" name="opt_only_registered" value="1" 
+				<th><?php _e( 'Only <strong>registered users</strong> can favorite', 'wp-favorite-posts' ); ?></th><td><input type="checkbox" name="opt_only_registered" value="1"
 					<?php
 					if ( stripslashes( $wpfp_options['opt_only_registered'] ) == '1' ) {
 						echo "checked='checked'";
@@ -125,21 +125,21 @@ jQuery(document).ready(function($) {
 				<th><?php _e( 'Auto show favorite link', 'wp-favorite-posts' ); ?></th>
 				<td>
 					<select name="autoshow">
-						<option value="custom" 
+						<option value="custom"
 						<?php
 						if ( $wpfp_options['autoshow'] == 'custom' ) {
 							echo "selected='selected'";
 						}
 						?>
 											   >Custom</option>
-						<option value="after" 
+						<option value="after"
 						<?php
 						if ( $wpfp_options['autoshow'] == 'after' ) {
 							echo "selected='selected'";
 						}
 						?>
 											  >After post</option>
-						<option value="before" 
+						<option value="before"
 						<?php
 						if ( $wpfp_options['autoshow'] == 'before' ) {
 							echo "selected='selected'";
@@ -162,21 +162,21 @@ jQuery(document).ready(function($) {
 					foreach ( $images as $img ) :
 						?>
 					<label for="<?php echo $img; ?>">
-						<input type="radio" name="before_image" id="<?php echo $img; ?>" value="<?php echo $img; ?>" 
+						<input type="radio" name="before_image" id="<?php echo $img; ?>" value="<?php echo $img; ?>"
 							<?php
 							if ( $wpfp_options['before_image'] == $img ) {
 								echo "checked='checked'";
 							}
 							?>
 																	 />
-						<img src="<?php echo WPFP_PATH; ?>/img/<?php echo $img; ?>" alt="<?php echo $img; ?>" title="<?php echo $img; ?>" class="wpfp-img" />
+						<img src="<?php echo WPFP_ASSETS_PATH; ?>/images/<?php echo $img; ?>" alt="<?php echo $img; ?>" title="<?php echo $img; ?>" class="wpfp-img" />
 					</label>
 					<br />
 						<?php
 					endforeach;
 					?>
 					<label for="custom">
-						<input type="radio" name="before_image" id="custom" value="custom" 
+						<input type="radio" name="before_image" id="custom" value="custom"
 						<?php
 						if ( $wpfp_options['before_image'] == 'custom' ) {
 							echo "checked='checked'";
@@ -188,7 +188,7 @@ jQuery(document).ready(function($) {
 					<input type="custom_before_image" name="custom_before_image" value="<?php echo stripslashes( $wpfp_options['custom_before_image'] ); ?>" />
 					<br />
 					<label for="none">
-						<input type="radio" name="before_image" id="none" value="" 
+						<input type="radio" name="before_image" id="none" value=""
 						<?php
 						if ( $wpfp_options['before_image'] == '' ) {
 							echo "checked='checked'";
@@ -209,14 +209,14 @@ jQuery(document).ready(function($) {
 			<tr>
 				<th><?php _e( 'Most favorited posts statistics', 'wp-favorite-posts' ); ?>*</th>
 				<td>
-					<label for="stats-enabled"><input type="radio" name="statistics" id="stats-enabled" value="1" 
+					<label for="stats-enabled"><input type="radio" name="statistics" id="stats-enabled" value="1"
 					<?php
 					if ( $wpfp_options['statistics'] ) {
 						echo "checked='checked'";
 					}
 					?>
 																												   /> Enabled</label>
-					<label for="stats-disabled"><input type="radio" name="statistics" id="stats-disabled" value="0" 
+					<label for="stats-disabled"><input type="radio" name="statistics" id="stats-disabled" value="0"
 					<?php
 					if ( ! $wpfp_options['statistics'] ) {
 						echo "checked='checked'";
@@ -265,14 +265,14 @@ jQuery(document).ready(function($) {
 				<th><?php _e( 'Text for add link', 'wp-favorite-posts' ); ?></th><td><input type="text" name="add_favorite" value="<?php echo stripslashes( $wpfp_options['add_favorite'] ); ?>" /></td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Text for added', 'wp-favorite-posts' ); ?></th><td><input type="checkbox"  
+				<th><?php _e( 'Text for added', 'wp-favorite-posts' ); ?></th><td><input type="checkbox"
 					<?php
 					if ( $wpfp_options['added'] == 'show remove link' ) {
 						echo "checked='checked'";
 					}
 					?>
 					 name="show_remove_link" onclick="jQuery('#added').val(''); jQuery('#added').toggle();" value="show_remove_link" id="show_remove_link" /> <label for="show_remove_link">Show remove link</label>
-				<br /><input id="added" type="text" name="added" 
+				<br /><input id="added" type="text" name="added"
 				<?php
 				if ( $wpfp_options['added'] == 'show remove link' ) {
 					echo "style='display:none;'";
@@ -285,7 +285,7 @@ jQuery(document).ready(function($) {
 			</tr>
 			<tr>
 				<th><?php _e( 'Text for removed', 'wp-favorite-posts' ); ?></th>
-				<td><input type="checkbox" 
+				<td><input type="checkbox"
 				<?php
 				if ( $wpfp_options['removed'] == 'show add link' ) {
 					echo "checked='checked'";
@@ -293,7 +293,7 @@ jQuery(document).ready(function($) {
 				?>
 											name="show_add_link" id="show_add_link" onclick="jQuery('#removed').val(''); jQuery('#removed').toggle();" value='show_add_link' /> <label for="show_add_link">Show add link</label>
 				<br />
-				<input id="removed" type="text" name="removed" 
+				<input id="removed" type="text" name="removed"
 				<?php
 				if ( $wpfp_options['removed'] == 'show add link' ) {
 					echo "style='display:none;'";
@@ -338,7 +338,7 @@ jQuery(document).ready(function($) {
 	<div class="inside" style="display: block;">
 		<table class="form-table">
 			<tr>
-				<td><input type="checkbox" value="1" 
+				<td><input type="checkbox" value="1"
 				<?php
 				if ( $wpfp_options['dont_load_js_file'] == '1' ) {
 					echo "checked='checked'";
@@ -347,14 +347,14 @@ jQuery(document).ready(function($) {
 													  name="dont_load_js_file" id="dont_load_js_file" /> <label for="dont_load_js_file">Don't load js file</label></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" value="1" 
+				<td><input type="checkbox" value="1"
 				<?php
 				if ( $wpfp_options['dont_load_css_file'] == '1' ) {
 					echo "checked='checked'";
 				}
 				?>
 													  name="dont_load_css_file" id="dont_load_css_file" /> <label for="dont_load_css_file">Don't load css file</label></td>
-			</tr>           
+			</tr>
 			<tr>
 				<td>
 					<input type="submit" name="submit" class="button button-primary" value="<?php _e( 'Update options &raquo;' ); ?>" />
