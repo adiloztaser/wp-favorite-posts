@@ -1,6 +1,7 @@
 <?php
-	$wpfp_before = '';
-	echo "<div class='wpfp-span'>";
+$wpfp_before = '';
+echo "<div class='wpfp-span'>";
+
 if ( ! empty( $user ) ) {
 	if ( wpfp_is_user_favlist_public( $user ) ) {
 		$wpfp_before = "$user's Favorite Posts.";
@@ -9,9 +10,9 @@ if ( ! empty( $user ) ) {
 	}
 }
 
-if ( $wpfp_before ) :
+if ( $wpfp_before ) {
 	echo '<div class="wpfp-page-before">' . $wpfp_before . '</div>';
-endif;
+}
 
 if ( $favorite_post_ids ) {
 	$favorite_post_ids = array_reverse( $favorite_post_ids );
