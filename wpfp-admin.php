@@ -5,11 +5,11 @@ if ( isset( $_POST['submit'] ) ) {
 		die( __( 'Cheatin&#8217; uh?' ) );
 	}
 
-	if ( isset( $_POST['show_remove_link'] ) && $_POST['show_remove_link'] == 'show_remove_link' ) {
+	if ( isset( $_POST['show_remove_link'] ) && 'show_remove_link' === $_POST['show_remove_link'] ) {
 		$_POST['added'] = 'show remove link';
 	}
 
-	if ( isset( $_POST['show_add_link'] ) && $_POST['show_add_link'] == 'show_add_link' ) {
+	if ( isset( $_POST['show_add_link'] ) && 'show_add_link' === $_POST['show_add_link'] ) {
 		$_POST['removed'] = 'show add link';
 	}
 
@@ -49,10 +49,10 @@ if ( isset( $_POST['submit'] ) ) {
 
 $message = '';
 if ( isset( $_GET['action'] ) ) {
-	if ( $_GET['action'] == 'reset-statistics' ) {
+	if ( 'reset-statistics' === $_GET['action'] ) {
 		global $wpdb;
-			$results = $wpdb->get_results( $query );
-		$query       = "DELETE FROM $wpdb->postmeta WHERE meta_key = 'wpfp_favorites'";
+
+		$query = "DELETE FROM $wpdb->postmeta WHERE meta_key = 'wpfp_favorites'";
 
 		$message = '<div class="updated below-h2" id="message"><p>';
 		if ( $wpdb->query( $query ) ) {

@@ -53,18 +53,21 @@ function wp_favorite_posts() {
 
 	$ajax_mode = isset( $_REQUEST['ajax'] ) ? $_REQUEST['ajax'] : false;
 
-	if ( $_REQUEST['wpfpaction'] == 'add' ) {
+	if ( 'add' === $_REQUEST['wpfpaction'] ) {
 		wpfp_add_favorite();
-	} elseif ( $_REQUEST['wpfpaction'] == 'remove' ) {
+
+	} elseif ( 'remove' === $_REQUEST['wpfpaction'] ) {
 		wpfp_remove_favorite();
-	} elseif ( $_REQUEST['wpfpaction'] == 'clear' ) {
+
+	} elseif ( 'clear' === $_REQUEST['wpfpaction'] ) {
 		if ( wpfp_clear_favorites() ) {
 			wpfp_die_or_go( wpfp_get_option( 'cleared' ) );
-		} else {
-			wpfp_die_or_go( 'ERROR' );
-		}
-	}
 
+			return;
+		}
+
+		wpfp_die_or_go( 'ERROR' );
+	}
 }
 add_action( 'wp_loaded', 'wp_favorite_posts' );
 
@@ -87,7 +90,7 @@ function wpfp_add_favorite( $post_id = '' ) {
 			wpfp_update_post_meta( $post_id, 1 );
 		}
 
-		if ( wpfp_get_option( 'added' ) == 'show remove link' ) {
+		if ( 'show remove link' === wpfp_get_option( 'added' ) ) {
 			$str = wpfp_link( 1, 'remove', 0, array( 'post_id' => $post_id ) );
 			wpfp_die_or_go( $str );
 
@@ -125,8 +128,8 @@ function wpfp_remove_favorite( $post_id = '' ) {
 		wpfp_update_post_meta( $post_id, -1 );
 	}
 
-	if ( wpfp_get_option( 'removed' ) == 'show add link' ) {
-		if ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] == 1 ) {
+	if ( 'show add link' === wpfp_get_option( 'removed' ) ) {
+		if ( isset( $_REQUEST['page'] ) && 1 === $_REQUEST['page'] ) {
 			$str = '';
 		} else {
 			$str = wpfp_link( 1, 'add', 0, array( 'post_id' => $post_id ) );
@@ -169,7 +172,7 @@ function wpfp_check_favorited( $cid ) {
 
 		if ( $favorite_post_ids ) {
 			foreach ( $favorite_post_ids as $fpost_id ) {
-				if ( $fpost_id == $cid ) {
+				if ( $fpost_id === $cid ) {
 					return true;
 				}
 			}
@@ -180,7 +183,7 @@ function wpfp_check_favorited( $cid ) {
 
 	if ( wpfp_get_cookie() ) {
 		foreach ( wpfp_get_cookie() as $fpost_id => $val ) {
-			if ( $fpost_id == $cid ) {
+			if ( $fpost_id === $cid ) {
 				return true;
 			}
 		}
@@ -199,10 +202,10 @@ function wpfp_link( $return = 0, $action = '', $show_span = 1, $args = array() )
 	$str .= wpfp_before_link_img();
 	$str .= wpfp_loading_img();
 
-	if ( $action == 'remove' ) {
+	if ( 'remove' === $action ) {
 		$str .= wpfp_link_html( $post_id, wpfp_get_option( 'remove_favorite' ), 'remove' );
 
-	} elseif ( $action == 'add' ) {
+	} elseif ( 'add' === $action ) {
 		$str .= wpfp_link_html( $post_id, wpfp_get_option( 'add_favorite' ), 'add' );
 
 	} elseif ( wpfp_check_favorited( $post_id ) ) {
@@ -312,10 +315,10 @@ function wpfp_before_link_img() {
 	$options = wpfp_get_options();
 	$option  = $options['before_image'];
 
-	if ( $option == '' ) {
+	if ( '' === $option ) {
 		return '';
 
-	} elseif ( $option == 'custom' ) {
+	} elseif ( 'custom' === $option ) {
 		return "<img src='" . $options['custom_before_image'] . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
 	}
 
@@ -380,9 +383,9 @@ function wpfp_content_filter( $content ) {
 		return $content;
 	}
 
-	if ( wpfp_get_option( 'autoshow' ) == 'before' ) {
+	if ( 'before' === wpfp_get_option( 'autoshow' ) ) {
 		$content = wpfp_link( 1 ) . $content;
-	} elseif ( wpfp_get_option( 'autoshow' ) == 'after' ) {
+	} elseif ( 'after' === wpfp_get_option( 'autoshow' ) ) {
 		$content .= wpfp_link( 1 );
 	}
 
@@ -456,7 +459,7 @@ function wpfp_update_post_meta( $post_id, $val ) {
 	$old_val = wpfp_get_post_meta( $post_id );
 	$new_val = $old_val + $val;
 
-	if ( $val == -1 && $old_val == 0 ) {
+	if ( -1 === $val && 0 === $old_val ) {
 		$new_val = 0;
 	}
 
