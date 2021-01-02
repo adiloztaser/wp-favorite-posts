@@ -19,10 +19,10 @@
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-
-define( 'WPFP_JS_VERSION', '1.6.8' );
-define( 'WPFP_PATH', plugins_url() . '/wp-favorite-posts' );
-define( 'WPFP_ASSETS_PATH', WPFP_PATH . '/assets' );
+define( 'WPFP_VERSION', '1.6.8' );
+define( 'WPFP_URL', plugins_url() . '/wp-favorite-posts' );
+define( 'WPFP_PATH', dirname( __FILE__ ) );
+define( 'WPFP_DIST_URL', WPFP_URL . '/dist' );
 define( 'WPFP_META_KEY', 'wpfp_favorites' );
 define( 'WPFP_USER_OPTION_KEY', 'wpfp_useroptions' );
 define( 'WPFP_COOKIE_KEY', 'wp-favorite-posts' );
@@ -31,6 +31,8 @@ define( 'WPFP_COOKIE_KEY', 'wp-favorite-posts' );
 if ( ! defined( 'WPFP_DEFAULT_PRIVACY_SETTING' ) ) {
 	define( 'WPFP_DEFAULT_PRIVACY_SETTING', false );
 }
+
+require_once WPFP_PATH . '/includes/admin/index.php';
 
 $ajax_mode = 1;
 
@@ -198,7 +200,7 @@ function wpfp_link( $return = 0, $action = '', $show_span = 1, $args = array() )
 	$post_id = &$post->ID;
 	extract( $args );
 
-	$str = '';
+	$str  = '';
 	$str .= wpfp_before_link_img();
 	$str .= wpfp_loading_img();
 
@@ -308,7 +310,7 @@ function wpfp_list_most_favorited( $limit = 5 ) {
 require 'wpfp-widgets.php';
 
 function wpfp_loading_img() {
-	return "<img src='" . WPFP_ASSETS_PATH . "/images/loading.gif' alt='Loading' title='Loading' class='wpfp-hide wpfp-img' />";
+	return "<img src='" . WPFP_DIST_URL . "/images/loading.gif' alt='Loading' title='Loading' class='wpfp-hide wpfp-img' />";
 }
 
 function wpfp_before_link_img() {
@@ -322,7 +324,7 @@ function wpfp_before_link_img() {
 		return "<img src='" . $options['custom_before_image'] . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
 	}
 
-	return "<img src='" . WPFP_ASSETS_PATH . '/images/' . $option . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
+	return "<img src='" . WPFP_DIST_URL . '/images/' . $option . "' alt='Favorite' title='Favorite' class='wpfp-img' />";
 }
 
 function wpfp_clear_favorites() {
@@ -401,14 +403,14 @@ add_shortcode( 'wp-favorite-posts', 'wpfp_shortcode_func' );
 
 function wpfp_add_js_script() {
 	if ( ! wpfp_get_option( 'dont_load_js_file' ) ) {
-		wp_enqueue_script( 'wp-favorite-posts', WPFP_ASSETS_PATH . '/js/script.js', array( 'jquery' ), WPFP_JS_VERSION );
+		wp_enqueue_script( 'wp-favorite-posts', WPFP_DIST_URL . '/js/script.js', array( 'jquery' ), WPFP_JS_VERSION );
 	}
 }
 add_action( 'wp_print_scripts', 'wpfp_add_js_script' );
 
 function wpfp_wp_print_styles() {
 	if ( ! wpfp_get_option( 'dont_load_css_file' ) ) {
-		echo "<link rel='stylesheet' id='wpfp-css' href='" . WPFP_ASSETS_PATH . "/css/wpfp.css' type='text/css' />" . "\n";
+		echo "<link rel='stylesheet' id='wpfp-css' href='" . WPFP_DIST_URL . "/css/wpfp.css' type='text/css' />" . "\n";
 	}
 }
 add_action( 'wp_print_styles', 'wpfp_wp_print_styles' );
@@ -439,17 +441,6 @@ function wpfp_init() {
 	add_option( 'wpfp_options', $wpfp_options );
 }
 add_action( 'activate_wp-favorite-posts/wp-favorite-posts.php', 'wpfp_init' );
-
-function wpfp_config() {
-	include 'wpfp-admin.php';
-}
-
-function wpfp_config_page() {
-	if ( function_exists( 'add_submenu_page' ) ) {
-		add_options_page( __( 'WP Favorite Posts' ), __( 'WP Favorite Posts' ), 'manage_options', 'wp-favorite-posts', 'wpfp_config' );
-	}
-}
-add_action( 'admin_menu', 'wpfp_config_page' );
 
 function wpfp_update_user_meta( $arr ) {
 	return update_user_meta( wpfp_get_user_id(), WPFP_META_KEY, $arr );
